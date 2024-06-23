@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<root>
+  <module name="TOP" hier="TOP" level="1">
+    <var name="clk" hier=".TOP.clk" code="#" size="1"/>
+    <var name="rst" hier=".TOP.rst" code="$" size="1"/>
+    <module name="dump_sig_list" hier="TOP.dump_sig_list" level="2">
+      <var name="clk" hier="TOP.dump_sig_list.clk" code="#" size="1"/>
+      <var name="rst" hier="TOP.dump_sig_list.rst" code="$" size="1"/>
+      <instance name="cc" hier="TOP.dump_sig_list.cc" level="3" origName="counter" submodname="counter">
+        <var name="clk" hier="TOP.dump_sig_list.cc.clk" code="(" size="1" dir="input"/>
+        <var name="counter" hier="TOP.dump_sig_list.cc.counter" code="%" size="64" FF="true"/>
+        <var name="counter_w" hier="TOP.dump_sig_list.cc.counter_w" code="%" size="64" dir="output"/>
+        <var name="n_rst" hier="TOP.dump_sig_list.cc.n_rst" code="'" size="1" dir="input"/>
+      </instance>
+    </module>
+  </module>
+</root>

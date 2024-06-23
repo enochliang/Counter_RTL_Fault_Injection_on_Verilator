@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<!-- DESCRIPTION: Verilator output: XML representation of netlist -->
+<verilator_xml>
+  <files>
+    <file id="a" filename="&lt;built-in&gt;" language="1800-2017"/>
+    <file id="b" filename="&lt;command-line&gt;" language="1800-2017"/>
+    <file id="c" filename="rtl/counter.sv" language="1800-2017"/>
+    <file id="d" filename="rtl/dump_sig_list.sv" language="1800-2017"/>
+    <file id="e" filename="rtl/tb.sv" language="1800-2017"/>
+  </files>
+  <module_files>
+    <file id="e" filename="rtl/tb.sv" language="1800-2017"/>
+    <file id="c" filename="rtl/counter.sv" language="1800-2017"/>
+  </module_files>
+  <cells>
+    <cell loc="e,1,8,1,10" name="tb" submodname="tb" hier="tb">
+      <cell loc="e,10,10,10,12" name="cc" submodname="counter" hier="tb.cc"/>
+    </cell>
+  </cells>
+  <netlist>
+    <module loc="e,1,8,1,10" name="tb" origName="tb" topModule="1">
+      <var loc="e,2,8,2,11" name="clk" dtype_id="1" dir="input" pinIndex="1" vartype="logic" origName="clk"/>
+      <var loc="e,3,8,3,11" name="rst" dtype_id="1" dir="input" pinIndex="2" vartype="logic" origName="rst"/>
+      <var loc="e,4,15,4,20" name="_done" dtype_id="1" dir="output" pinIndex="3" vartype="logic" origName="_done"/>
+      <var loc="e,7,15,7,16" name="c" dtype_id="2" vartype="logic" origName="c"/>
+      <instance loc="e,10,10,10,12" name="cc" defName="counter" origName="cc">
+        <port loc="e,11,4,11,9" name="n_rst" direction="in" portIndex="1">
+          <varref loc="e,11,10,11,13" name="rst" dtype_id="1"/>
+        </port>
+        <port loc="e,12,4,12,7" name="clk" direction="in" portIndex="2">
+          <varref loc="e,12,8,12,11" name="clk" dtype_id="1"/>
+        </port>
+        <port loc="e,13,4,13,13" name="counter_w" direction="out" portIndex="3">
+          <varref loc="e,13,14,13,15" name="c" dtype_id="2"/>
+        </port>
+      </instance>
+      <always loc="e,15,2,15,8">
+        <sentree loc="e,15,8,15,9">
+          <senitem loc="e,15,10,15,17" edgeType="POS">
+            <varref loc="e,15,18,15,21" name="clk" dtype_id="1"/>
+          </senitem>
+        </sentree>
+        <begin loc="e,15,22,15,27">
+          <if loc="e,16,3,16,5">
+            <eq loc="e,16,8,16,10" dtype_id="1">
+              <const loc="e,16,11,16,15" name="64&apos;h40" dtype_id="2"/>
+              <varref loc="e,16,6,16,7" name="c" dtype_id="2"/>
+            </eq>
+            <begin>
+              <begin loc="e,16,16,16,21">
+                <assigndly loc="e,17,10,17,12" dtype_id="1">
+                  <const loc="e,17,13,17,14" name="1&apos;h1" dtype_id="1"/>
+                  <varref loc="e,17,4,17,9" name="_done" dtype_id="1"/>
+                </assigndly>
+              </begin>
+            </begin>
+            <begin>
+              <begin loc="e,18,12,18,17">
+                <assigndly loc="e,19,10,19,12" dtype_id="1">
+                  <const loc="e,19,13,19,14" name="1&apos;h0" dtype_id="1"/>
+                  <varref loc="e,19,4,19,9" name="_done" dtype_id="1"/>
+                </assigndly>
+              </begin>
+            </begin>
+          </if>
+        </begin>
+      </always>
+    </module>
+    <module loc="c,1,8,1,15" name="counter" origName="counter">
+      <var loc="c,2,8,2,13" name="n_rst" dtype_id="1" dir="input" pinIndex="1" vartype="logic" origName="n_rst"/>
+      <var loc="c,3,8,3,11" name="clk" dtype_id="1" dir="input" pinIndex="2" vartype="logic" origName="clk"/>
+      <var loc="c,4,16,4,25" name="counter_w" dtype_id="2" dir="output" pinIndex="3" vartype="logic" origName="counter_w"/>
+      <var loc="c,7,15,7,22" name="counter" dtype_id="2" vartype="logic" origName="counter"/>
+      <always loc="c,10,2,10,11">
+        <sentree loc="c,10,12,10,13">
+          <senitem loc="c,10,31,10,38" edgeType="POS">
+            <varref loc="c,10,39,10,42" name="clk" dtype_id="1"/>
+          </senitem>
+          <senitem loc="c,10,14,10,21" edgeType="NEG">
+            <varref loc="c,10,22,10,27" name="n_rst" dtype_id="1"/>
+          </senitem>
+        </sentree>
+        <begin loc="c,10,44,10,49">
+          <if loc="c,11,3,11,5">
+            <varref loc="c,11,7,11,12" name="n_rst" dtype_id="1"/>
+            <begin>
+              <begin loc="c,13,12,13,17">
+                <assigndly loc="c,14,12,14,14" dtype_id="2">
+                  <add loc="c,14,23,14,24" dtype_id="2">
+                    <const loc="c,14,25,14,26" name="64&apos;h1" dtype_id="2"/>
+                    <varref loc="c,14,15,14,22" name="counter" dtype_id="2"/>
+                  </add>
+                  <varref loc="c,14,4,14,11" name="counter" dtype_id="2"/>
+                </assigndly>
+              </begin>
+            </begin>
+            <begin>
+              <begin loc="c,11,13,11,18">
+                <assigndly loc="c,12,12,12,14" dtype_id="2">
+                  <const loc="c,12,15,12,16" name="64&apos;h0" dtype_id="2"/>
+                  <varref loc="c,12,4,12,11" name="counter" dtype_id="2"/>
+                </assigndly>
+              </begin>
+            </begin>
+          </if>
+        </begin>
+      </always>
+      <contassign loc="c,8,19,8,20" dtype_id="2">
+        <varref loc="c,7,15,7,22" name="counter" dtype_id="2"/>
+        <varref loc="c,4,16,4,25" name="counter_w" dtype_id="2"/>
+      </contassign>
+    </module>
+    <typetable loc="a,0,0,0,0">
+      <basicdtype loc="c,11,6,11,7" id="1" name="logic"/>
+      <basicdtype loc="e,7,2,7,7" id="2" name="logic" left="63" right="0"/>
+    </typetable>
+  </netlist>
+</verilator_xml>
